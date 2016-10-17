@@ -1,13 +1,12 @@
 #ifndef PSOCIF_H
 #define PSOCIF_H
 
-
-class PSoCIF
+class psocif
 {
     public:
-        PSoCIF();
-        ~PSoCIF();
-        void sendCommand(int cmd);
+        psocif();
+        ~psocif();
+        bool sendCommand(int cmd);
         char readCommand();
     protected:
     private:

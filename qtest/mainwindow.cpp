@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "psocif.h"
+#include <QMessageBox>
 
 psocif* lort;
 
@@ -25,5 +26,21 @@ void MainWindow::on_tmpExit_clicked()
 
 void MainWindow::on_waterButton_clicked()
 {
-    lort->sendCmd();
+    //psocif* test = new psocif;
+    //test->sendCommand(1);
+    //lort->sendCommand(0x01);
+    if(lort->sendCommand(0x00))
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Success");
+        msgBox.exec();
+    }
+    else
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Fail");
+        msgBox.exec();
+    }
+
+
 }
