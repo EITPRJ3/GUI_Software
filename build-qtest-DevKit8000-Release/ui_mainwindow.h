@@ -288,10 +288,10 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         tmpExit->setText(QApplication::translate("MainWindow", "exit", 0, QApplication::UnicodeUTF8));
         waterButton->setText(QApplication::translate("MainWindow", "send", 0, QApplication::UnicodeUTF8));
-        strongCoffee->setText(QApplication::translate("MainWindow", "AAAAA", 0, QApplication::UnicodeUTF8));
-        normalCoffee->setText(QApplication::translate("MainWindow", "PushButton", 0, QApplication::UnicodeUTF8));
-        weakCoffee->setText(QApplication::translate("MainWindow", "close", 0, QApplication::UnicodeUTF8));
-        favoriteCoffee->setText(QApplication::translate("MainWindow", "PushButton", 0, QApplication::UnicodeUTF8));
+        strongCoffee->setText(QApplication::translate("MainWindow", "CMD 0x00", 0, QApplication::UnicodeUTF8));
+        normalCoffee->setText(QApplication::translate("MainWindow", "CMD 0x01", 0, QApplication::UnicodeUTF8));
+        weakCoffee->setText(QApplication::translate("MainWindow", "CMD 0x02", 0, QApplication::UnicodeUTF8));
+        favoriteCoffee->setText(QApplication::translate("MainWindow", "CMD 0x03", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

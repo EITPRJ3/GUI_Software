@@ -20,6 +20,14 @@ private slots:
 
     void on_waterButton_clicked();
 
+    void on_strongCoffee_clicked();
+
+    void on_normalCoffee_clicked();
+
+    void on_weakCoffee_clicked();
+
+    void on_favoriteCoffee_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

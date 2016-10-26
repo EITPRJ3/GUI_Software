@@ -29,18 +29,27 @@ void MainWindow::on_waterButton_clicked()
     //psocif* test = new psocif;
     //test->sendCommand(1);
     //lort->sendCommand(0x01);
-    if(lort->sendCommand(0x00))
-    {
-        QMessageBox msgBox;
-        msgBox.setText("Success");
-        msgBox.exec();
-    }
-    else
-    {
-        QMessageBox msgBox;
-        msgBox.setText("Fail");
-        msgBox.exec();
-    }
+    lort->sendCommand(0x00);
 
 
+}
+
+void MainWindow::on_strongCoffee_clicked()
+{
+    lort->sendCommand(0x00);
+}
+
+void MainWindow::on_normalCoffee_clicked()
+{
+    lort->sendCommand(0x01);
+}
+
+void MainWindow::on_weakCoffee_clicked()
+{
+    lort->sendCommand(0x02);
+}
+
+void MainWindow::on_favoriteCoffee_clicked()
+{
+    lort->sendCommand(0x03);
 }
