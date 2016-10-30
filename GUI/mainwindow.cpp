@@ -115,6 +115,6 @@ void MainWindow::commHelper(int cmd)
 
 void MainWindow::setSucces(bool status)
 {
-    status_=status;
+    status_ = status;
 }
 

@@ -19,11 +19,13 @@ void SPI_worker::sendChoice()
 
     if(Psocif->sendCommand(chosen)==true)
     {
+        qDebug() << " Worker returner True" <<endl;
         emit succes(true);
         emit finished();
     }
     else
     {
+        qDebug() << "Worker returner False" <<endl;
         emit succes(false);
         emit finished();
     }

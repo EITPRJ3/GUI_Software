@@ -27,7 +27,7 @@ bool psocif::sendCommand(int cmd)
 
 
     int a= rand() % 2;
-    qDebug() << "Psoc har returneret " << a <<endl;
+    qDebug() << "Psoc returner " << a <<endl;
     return a;
 }
 

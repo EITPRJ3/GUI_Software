@@ -17,17 +17,20 @@ SOURCES += main.cpp\
     psocif.cpp \
     statistik.cpp \
     spi_worker.cpp \
-    makingscreen.cpp
+    makingscreen.cpp \
+    status.cpp
 
 HEADERS  += mainwindow.h \
     psocif.h \
     statistik.h \
     spi_worker.h \
-    makingscreen.h
+    makingscreen.h \
+    status.h
 
 FORMS    += mainwindow.ui \
     statistik.ui \
-    makingscreen.ui
+    makingscreen.ui \
+    status.ui
 
 target.path = /home/root/$${TARGET}
 INSTALL += target
