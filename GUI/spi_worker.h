@@ -12,7 +12,7 @@ public:
     void doSetup(QThread& thread);
 public slots:
     void setChoice(int choice);
-    void sendChoice();
+    void sendChoice(int choice);
 signals:
     void finished();
     void succes(bool status);

@@ -35,7 +35,7 @@ static const uint qt_meta_data_SPI_worker[] = {
 
  // slots: signature, parameters, type, tag, flags
       50,   43,   11,   11, 0x0a,
-      65,   11,   11,   11, 0x0a,
+      65,   43,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -43,7 +43,7 @@ static const uint qt_meta_data_SPI_worker[] = {
 static const char qt_meta_stringdata_SPI_worker[] = {
     "SPI_worker\0\0finished()\0status\0"
     "succes(bool)\0choice\0setChoice(int)\0"
-    "sendChoice()\0"
+    "sendChoice(int)\0"
 };
 
 void SPI_worker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -55,7 +55,7 @@ void SPI_worker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->finished(); break;
         case 1: _t->succes((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 2: _t->setChoice((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 3: _t->sendChoice(); break;
+        case 3: _t->sendChoice((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }

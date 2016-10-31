@@ -9,15 +9,15 @@ SPI_worker::SPI_worker()
 
 SPI_worker::~SPI_worker()
 {
-
+    qDebug() << "SPI worker nedlagt" << endl;
 }
 
-void SPI_worker::sendChoice()
+void SPI_worker::sendChoice(int choice)
 {
     psocif* Psocif = new psocif();
-    qDebug() << chosen << endl;
+    qDebug() << "Valgte vaerdi: " << choice << endl;
 
-    if(Psocif->sendCommand(chosen)==true)
+    if(Psocif->sendCommand(choice)==true)
     {
         qDebug() << " Worker returner True" <<endl;
         emit succes(true);
@@ -39,7 +39,7 @@ void SPI_worker::setChoice(int choice)
 
 void SPI_worker::doSetup(QThread &thread)
 {
-    connect(&thread,SIGNAL(started()),this,SLOT(sendChoice()),Qt::QueuedConnection);
+    //connect(&thread,SIGNAL(started()),this,SLOT(sendChoice()),Qt::QueuedConnection);
     connect(this,SIGNAL(finished()),&thread,SLOT(quit()),Qt::QueuedConnection);
     connect(this,SIGNAL(finished()),this,SLOT(deleteLater()),Qt::QueuedConnection);
     connect(&thread,SIGNAL(finished()),&thread,SLOT(deleteLater()),Qt::QueuedConnection);

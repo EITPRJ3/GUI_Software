@@ -43,6 +43,7 @@ void MainWindow::on_normalCoffee_clicked()
     int cmd = 2;
 
     commHelper(cmd);
+
     makingScreen* screen = new makingScreen;
 
     if(status_)
@@ -103,14 +104,11 @@ void MainWindow::commHelper(int cmd)
     worker->doSetup(*thread);
     worker->moveToThread(thread);
 
-    connect(this, SIGNAL(sendChoice(int)), worker, SLOT(setChoice(int)),Qt::DirectConnection);
+    connect(this, SIGNAL(sendChoice(int)), worker, SLOT(sendChoice(int)),Qt::DirectConnection);
     connect(worker,SIGNAL(succes(bool)),this,SLOT(setSucces(bool)),Qt::DirectConnection);
 
-    emit sendChoice(cmd);
-
     thread->start();
-
-
+    emit sendChoice(cmd);
 }
 
 void MainWindow::setSucces(bool status)
