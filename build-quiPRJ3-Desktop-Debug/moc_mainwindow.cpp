@@ -22,7 +22,7 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -40,6 +40,8 @@ static const uint qt_meta_data_MainWindow[] = {
      130,   11,   11,   11, 0x08,
      154,   11,   11,   11, 0x08,
      187,  180,   11,   11, 0x08,
+     203,   11,   11,   11, 0x08,
+     241,  231,   11,   11, 0x08,
 
        0        // eod
 };
@@ -51,7 +53,8 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_waterButton_clicked()\0"
     "on_weakCoffee_clicked()\0"
     "on_strongCoffee_clicked()\0status\0"
-    "setSucces(bool)\0"
+    "setSucces(bool)\0on_favoriteCoffee_clicked()\0"
+    "conStatus\0setConStatus(int)\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -68,6 +71,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->on_weakCoffee_clicked(); break;
         case 6: _t->on_strongCoffee_clicked(); break;
         case 7: _t->setSucces((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 8: _t->on_favoriteCoffee_clicked(); break;
+        case 9: _t->setConStatus((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -105,9 +110,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 10;
     }
     return _id;
 }

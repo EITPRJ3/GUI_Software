@@ -33,5 +33,10 @@ bool psocif::sendCommand(int cmd)
 
 char psocif::readCommand()
 {
+    return 0;
+}
 
+char psocif::readStatus()
+{
+    return 0;
 }

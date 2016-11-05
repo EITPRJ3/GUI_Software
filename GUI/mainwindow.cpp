@@ -7,7 +7,8 @@
 #include "QDebug"
 #include <unistd.h>
 #include <makingscreen.h>
-
+#include "status.h"
+#include "QtCore"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -111,8 +112,37 @@ void MainWindow::commHelper(int cmd)
     emit sendChoice(cmd);
 }
 
+void MainWindow::getContainerStatus()
+{
+    QThread *thread = new QThread;
+    SPI_worker *worker = new SPI_worker();
+
+    worker->doConStatusSetup(*thread);
+    worker->moveToThread(thread);
+
+    connect(worker,SIGNAL(containerStatus(int)),this,SLOT(setConStatus(int)),Qt::DirectConnection);
+
+    thread->start();
+
+
+}
+
 void MainWindow::setSucces(bool status)
 {
     status_ = status;
 }
 
+void MainWindow::setConStatus(int conStatus)
+{
+    conStatus_ = conStatus;
+}
+
+void MainWindow::on_favoriteCoffee_clicked()
+{
+   getContainerStatus();
+
+   sleep(1);
+   status* statusScreen = new status;
+
+   statusScreen->doStatusScreen(conStatus_);
+}

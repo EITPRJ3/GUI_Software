@@ -18,6 +18,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void commHelper(int cmd);
+    void getContainerStatus();
 private slots:
 
     void on_tmpExit_clicked();
@@ -33,11 +34,16 @@ private slots:
     void on_strongCoffee_clicked();
 
     void setSucces(bool status);
+    void on_favoriteCoffee_clicked();
+    void setConStatus(int conStatus);
+
+
 signals:
     void sendChoice(int choice);
 private:
     Ui::MainWindow *ui;
     bool status_;
+    int conStatus_;
 
 };
 

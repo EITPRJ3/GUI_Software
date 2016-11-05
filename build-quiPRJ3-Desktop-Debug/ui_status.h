@@ -14,6 +14,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QHeaderView>
+#include <QtGui/QLabel>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,12 +22,20 @@ QT_BEGIN_NAMESPACE
 class Ui_status
 {
 public:
+    QLabel *water_cointainer;
+    QLabel *coffee_container;
 
     void setupUi(QWidget *status)
     {
         if (status->objectName().isEmpty())
             status->setObjectName(QString::fromUtf8("status"));
         status->resize(480, 272);
+        water_cointainer = new QLabel(status);
+        water_cointainer->setObjectName(QString::fromUtf8("water_cointainer"));
+        water_cointainer->setGeometry(QRect(100, 120, 59, 15));
+        coffee_container = new QLabel(status);
+        coffee_container->setObjectName(QString::fromUtf8("coffee_container"));
+        coffee_container->setGeometry(QRect(310, 120, 59, 15));
 
         retranslateUi(status);
 
@@ -36,6 +45,8 @@ public:
     void retranslateUi(QWidget *status)
     {
         status->setWindowTitle(QApplication::translate("status", "Form", 0, QApplication::UnicodeUTF8));
+        water_cointainer->setText(QString());
+        coffee_container->setText(QString());
     } // retranslateUi
 
 };

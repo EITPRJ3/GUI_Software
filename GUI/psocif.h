@@ -8,6 +8,7 @@ class psocif
         ~psocif();
         bool sendCommand(int cmd);
         char readCommand();
+        char readStatus();
     protected:
     private:
 };

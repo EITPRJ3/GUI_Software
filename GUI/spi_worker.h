@@ -10,12 +10,15 @@ public:
     SPI_worker();
     ~SPI_worker();
     void doSetup(QThread& thread);
+    void doConStatusSetup(QThread &thread);
 public slots:
     void setChoice(int choice);
     void sendChoice(int choice);
+    void containerStatus();
 signals:
     void finished();
     void succes(bool status);
+    void containerStatus(int conStatus);
 private:
     int chosen;
 };

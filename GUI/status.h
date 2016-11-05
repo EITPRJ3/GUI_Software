@@ -14,7 +14,7 @@ class status : public QWidget
 public:
     explicit status(QWidget *parent = 0);
     ~status();
-
+    void doStatusScreen(int conStatus);
 private:
     Ui::status *ui;
 };

@@ -31,9 +31,7 @@ void makingScreen::init(int value)
      case 1:
         coffeeScreen();
         break;
-
      case 2:
-
         waterScreen();
         break;
 
