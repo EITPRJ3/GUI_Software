@@ -15,6 +15,9 @@ public:
     explicit status(QWidget *parent = 0);
     ~status();
     void doStatusScreen(int conStatus);
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::status *ui;
 };

@@ -80,6 +80,6 @@ void makingScreen::strongScreen()
     ui->screen->setMovie(coffeeMovie);
     coffeeMovie->setScaledSize(QSize(475,400));
     coffeeMovie->start();
-    ui->makingText->setText("Din kaffe bryges");
+    ui->makingText->setText("Din kaffe brygges");
     QTimer::singleShot(3000,this,SLOT(close()));
 }

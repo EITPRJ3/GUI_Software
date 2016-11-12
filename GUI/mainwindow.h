@@ -40,6 +40,7 @@ private slots:
 
 signals:
     void sendChoice(int choice);
+    void startStatus();
 private:
     Ui::MainWindow *ui;
     bool status_;

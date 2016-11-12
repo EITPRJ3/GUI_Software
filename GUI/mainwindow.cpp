@@ -9,6 +9,8 @@
 #include <makingscreen.h>
 #include "status.h"
 #include "QtCore"
+#include "database.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -16,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
 
+    createDatabase();
 }
 
 MainWindow::~MainWindow()
@@ -50,7 +53,9 @@ void MainWindow::on_normalCoffee_clicked()
     if(status_)
         screen->init(cmd = 1);
     else
-        screen->init(cmd = 3);;
+        screen->init(cmd = 3);
+
+    databaseCountUp(0);
 }
 
 
@@ -65,6 +70,8 @@ void MainWindow::on_waterButton_clicked()
         screen->init(cmd = 1);
     else
         screen->init(cmd = 3);
+
+    databaseCountUp(3);
 }
 
 void MainWindow::on_weakCoffee_clicked()
@@ -78,6 +85,8 @@ void MainWindow::on_weakCoffee_clicked()
         screen->init(cmd = 1);
     else
         screen->init(cmd = 3);
+
+    databaseCountUp(1);
 
 }
 
@@ -95,6 +104,7 @@ void MainWindow::on_strongCoffee_clicked()
     else
         screen->init(cmd = 3);
 
+    databaseCountUp(2);
 }
 
 void MainWindow::commHelper(int cmd)
@@ -121,10 +131,10 @@ void MainWindow::getContainerStatus()
     worker->moveToThread(thread);
 
     connect(worker,SIGNAL(containerStatus(int)),this,SLOT(setConStatus(int)),Qt::DirectConnection);
+    connect(this,SIGNAL(startStatus()),worker,SLOT(containerStatus()),Qt::DirectConnection);
 
     thread->start();
-
-
+    emit(startStatus());
 }
 
 void MainWindow::setSucces(bool status)
@@ -141,8 +151,8 @@ void MainWindow::on_favoriteCoffee_clicked()
 {
    getContainerStatus();
 
-   sleep(1);
    status* statusScreen = new status;
 
    statusScreen->doStatusScreen(conStatus_);
+
 }

@@ -1,6 +1,7 @@
 #include "statistik.h"
 #include "ui_statistik.h"
 #include "QDebug"
+#include <QAbstractItemView>
 
 statistik::statistik(QWidget *parent) :
     QWidget(parent),

@@ -48,7 +48,7 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">QWidget { background: rgb(200,200, 200) }</string>
+    <string notr="true">QWidget { background: rgb(255,255,255) }</string>
    </property>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
@@ -189,6 +189,11 @@
          </item>
          <item>
           <widget class="QPushButton" name="admin_Button">
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: rgb(200,200,200);
+}</string>
+           </property>
            <property name="text">
             <string>Admin</string>
            </property>
@@ -517,8 +522,8 @@
          <item>
           <widget class="QPushButton" name="statistik">
            <property name="styleSheet">
-            <string notr="true">QButtin{
-border-image:url(:/test/Key.png);
+            <string notr="true">QPushButton {
+    background-color: rgb(200,200,200);
 }</string>
            </property>
            <property name="text">

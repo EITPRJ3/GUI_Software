@@ -18,14 +18,16 @@ SOURCES += main.cpp\
     statistik.cpp \
     spi_worker.cpp \
     makingscreen.cpp \
-    status.cpp
+    status.cpp \
+    database.cpp
 
 HEADERS  += mainwindow.h \
     psocif.h \
     statistik.h \
     spi_worker.h \
     makingscreen.h \
-    status.h
+    status.h \
+    database.h
 
 FORMS    += mainwindow.ui \
     statistik.ui \

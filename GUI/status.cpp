@@ -1,14 +1,15 @@
 #include "status.h"
 #include "ui_status.h"
 #include "psocif.h"
-#include "QThread"
 #include "QDebug"
+#include "QPixmap"
 status::status(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::status)
 {
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
+    this->setStyleSheet("background-color:white;");
 }
 
 void status::doStatusScreen(int conStatus)
@@ -18,14 +19,26 @@ void status::doStatusScreen(int conStatus)
     switch(conStatus)
     {
     case 0:
-        ui->coffee_container->setText("Case 0");
+        QPixmap coffeeMap(":/test/bottled-yes.png");
+        QPixmap CoffeePix = coffeeMap.scaledToWidth(150);
+
+        QPixmap waterMap(":/test/coffee_container_yes.png");
+        QPixmap WaterPix = waterMap.scaledToWidth(200);
+
+        ui->coffee_container->setPixmap(CoffeePix);
+        ui->water_cointainer->setPixmap(WaterPix);
+
         break;
-    default:
-        ui->coffee_container->setText("Test");
+
     }
 }
 
 status::~status()
 {
     delete ui;
+}
+
+void status::on_pushButton_clicked()
+{
+    this->close();
 }

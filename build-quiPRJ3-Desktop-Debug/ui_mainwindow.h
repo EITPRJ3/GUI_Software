@@ -77,7 +77,7 @@ public:
         sizePolicy.setHeightForWidth(centralWidget->sizePolicy().hasHeightForWidth());
         centralWidget->setSizePolicy(sizePolicy);
         centralWidget->setMinimumSize(QSize(480, 272));
-        centralWidget->setStyleSheet(QString::fromUtf8("QWidget { background: rgb(200,200, 200) }"));
+        centralWidget->setStyleSheet(QString::fromUtf8("QWidget { background: rgb(255,255,255) }"));
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
         horizontalLayoutWidget->setGeometry(QRect(9, 9, 461, 282));
@@ -159,6 +159,9 @@ public:
 
         admin_Button = new QPushButton(horizontalLayoutWidget);
         admin_Button->setObjectName(QString::fromUtf8("admin_Button"));
+        admin_Button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(200,200,200);\n"
+"}"));
 
         verticalLayout_2->addWidget(admin_Button);
 
@@ -325,8 +328,8 @@ public:
 
         statistik = new QPushButton(horizontalLayoutWidget);
         statistik->setObjectName(QString::fromUtf8("statistik"));
-        statistik->setStyleSheet(QString::fromUtf8("QButtin{\n"
-"border-image:url(:/test/Key.png);\n"
+        statistik->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: rgb(200,200,200);\n"
 "}"));
 
         verticalLayout->addWidget(statistik);

@@ -52,7 +52,6 @@ void SPI_worker::setChoice(int choice)
 
 void SPI_worker::doSetup(QThread &thread)
 {
-
     connect(this,SIGNAL(finished()),&thread,SLOT(quit()),Qt::QueuedConnection);
     connect(this,SIGNAL(finished()),this,SLOT(deleteLater()),Qt::QueuedConnection);
     connect(&thread,SIGNAL(finished()),&thread,SLOT(deleteLater()),Qt::QueuedConnection);
@@ -60,7 +59,6 @@ void SPI_worker::doSetup(QThread &thread)
 
 void SPI_worker::doConStatusSetup(QThread &thread)
 {
-    connect(&thread,SIGNAL(started()),this,SLOT(containerStatus()),Qt::QueuedConnection);
     connect(this,SIGNAL(finished()),&thread,SLOT(quit()),Qt::QueuedConnection);
     connect(this,SIGNAL(finished()),this,SLOT(deleteLater()),Qt::QueuedConnection);
     connect(&thread,SIGNAL(finished()),&thread,SLOT(deleteLater()),Qt::QueuedConnection);
