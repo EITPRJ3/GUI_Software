@@ -3,7 +3,7 @@
 
 void createDatabase();
 void databaseCountUp(int line);
-void databaseRead();
+void databaseRead(int *arrayPtr, int size);
 void databaseReadLine(int line);
 void clearDatabase();
 

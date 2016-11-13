@@ -5,10 +5,10 @@
 #include "QTextStream"
 
 const int NUMBERSOFCHOICES = 5;
+const QString name ="database.txt";
 
 void createDatabase()
 {
-    QString name ="database.txt";
     QFile mDatabase(name);
 
     if(!mDatabase.exists())
@@ -30,7 +30,6 @@ void createDatabase()
 
 void databaseCountUp(int line)
 {
-    QString name ="database.txt";
     QFile mDatabase(name);
 
     if(!mDatabase.exists())
@@ -72,8 +71,32 @@ void databaseCountUp(int line)
     mDatabase.close();
 }
 
-void databaseRead()
+void databaseRead(int *arrayPtr, int size)
 {
+    QFile mDatabase(name);
+
+    if(!mDatabase.exists())
+    {
+        qDebug() << "No database to read" <<endl;
+        return;
+    }
+
+    if(!mDatabase.open(QFile::ReadOnly))
+    {
+        qDebug() << "Filen kan ikke åbnes" <<endl;
+        return;
+    }
+
+    while(!mDatabase.atEnd())
+    {
+        for(int i = 0; i < size ; i++ )
+        {
+            QString dataString = mDatabase.readLine();
+            arrayPtr[i] = dataString.toInt();
+        }
+    }
+
+    mDatabase.close();
 
 }
 
@@ -84,7 +107,6 @@ void databaseReadLine(int line)
 
 void clearDatabase()
 {
-    QString name ="database.txt";
     QFile mDatabase(name);
 
     if(!mDatabase.open(QFile::WriteOnly))

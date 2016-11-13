@@ -14,6 +14,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QHeaderView>
+#include <QtGui/QLabel>
 #include <QtGui/QPushButton>
 #include <QtGui/QWidget>
 
@@ -23,6 +24,19 @@ class Ui_statistik
 {
 public:
     QPushButton *Exit;
+    QLabel *PieLabel;
+    QLabel *NormalLabel;
+    QLabel *WeakLabel;
+    QLabel *WaterLabel;
+    QLabel *StrongLabel;
+    QLabel *FavoriteLabel;
+    QLabel *WeakColor;
+    QLabel *StrongColor;
+    QLabel *WaterColor;
+    QLabel *NormalColor;
+    QLabel *FavoriteColor;
+    QLabel *TotalAntal;
+    QLabel *label;
 
     void setupUi(QWidget *statistik)
     {
@@ -31,7 +45,46 @@ public:
         statistik->resize(480, 272);
         Exit = new QPushButton(statistik);
         Exit->setObjectName(QString::fromUtf8("Exit"));
-        Exit->setGeometry(QRect(190, 120, 80, 23));
+        Exit->setGeometry(QRect(10, 240, 80, 23));
+        PieLabel = new QLabel(statistik);
+        PieLabel->setObjectName(QString::fromUtf8("PieLabel"));
+        PieLabel->setGeometry(QRect(10, 30, 181, 181));
+        NormalLabel = new QLabel(statistik);
+        NormalLabel->setObjectName(QString::fromUtf8("NormalLabel"));
+        NormalLabel->setGeometry(QRect(220, 30, 271, 16));
+        WeakLabel = new QLabel(statistik);
+        WeakLabel->setObjectName(QString::fromUtf8("WeakLabel"));
+        WeakLabel->setGeometry(QRect(220, 60, 271, 16));
+        WaterLabel = new QLabel(statistik);
+        WaterLabel->setObjectName(QString::fromUtf8("WaterLabel"));
+        WaterLabel->setGeometry(QRect(220, 120, 271, 16));
+        StrongLabel = new QLabel(statistik);
+        StrongLabel->setObjectName(QString::fromUtf8("StrongLabel"));
+        StrongLabel->setGeometry(QRect(220, 90, 271, 16));
+        FavoriteLabel = new QLabel(statistik);
+        FavoriteLabel->setObjectName(QString::fromUtf8("FavoriteLabel"));
+        FavoriteLabel->setGeometry(QRect(220, 150, 271, 16));
+        WeakColor = new QLabel(statistik);
+        WeakColor->setObjectName(QString::fromUtf8("WeakColor"));
+        WeakColor->setGeometry(QRect(190, 60, 16, 16));
+        StrongColor = new QLabel(statistik);
+        StrongColor->setObjectName(QString::fromUtf8("StrongColor"));
+        StrongColor->setGeometry(QRect(190, 90, 16, 16));
+        WaterColor = new QLabel(statistik);
+        WaterColor->setObjectName(QString::fromUtf8("WaterColor"));
+        WaterColor->setGeometry(QRect(190, 120, 16, 16));
+        NormalColor = new QLabel(statistik);
+        NormalColor->setObjectName(QString::fromUtf8("NormalColor"));
+        NormalColor->setGeometry(QRect(190, 30, 16, 16));
+        FavoriteColor = new QLabel(statistik);
+        FavoriteColor->setObjectName(QString::fromUtf8("FavoriteColor"));
+        FavoriteColor->setGeometry(QRect(190, 150, 16, 16));
+        TotalAntal = new QLabel(statistik);
+        TotalAntal->setObjectName(QString::fromUtf8("TotalAntal"));
+        TotalAntal->setGeometry(QRect(220, 180, 241, 16));
+        label = new QLabel(statistik);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(190, 0, 141, 16));
 
         retranslateUi(statistik);
 
@@ -42,6 +95,19 @@ public:
     {
         statistik->setWindowTitle(QApplication::translate("statistik", "Form", 0, QApplication::UnicodeUTF8));
         Exit->setText(QApplication::translate("statistik", "Exit", 0, QApplication::UnicodeUTF8));
+        PieLabel->setText(QString());
+        NormalLabel->setText(QApplication::translate("statistik", "TextLabel", 0, QApplication::UnicodeUTF8));
+        WeakLabel->setText(QApplication::translate("statistik", "TextLabel", 0, QApplication::UnicodeUTF8));
+        WaterLabel->setText(QApplication::translate("statistik", "TextLabel", 0, QApplication::UnicodeUTF8));
+        StrongLabel->setText(QApplication::translate("statistik", "TextLabel", 0, QApplication::UnicodeUTF8));
+        FavoriteLabel->setText(QApplication::translate("statistik", "TextLabel", 0, QApplication::UnicodeUTF8));
+        WeakColor->setText(QString());
+        StrongColor->setText(QString());
+        WaterColor->setText(QString());
+        NormalColor->setText(QString());
+        FavoriteColor->setText(QString());
+        TotalAntal->setText(QApplication::translate("statistik", "TextLabel", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("statistik", "Statistik vindue", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

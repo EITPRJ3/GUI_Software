@@ -2,7 +2,7 @@
 #define MAKINGSCREEN_H
 
 #include <QWidget>
-
+#include "QMovie"
 namespace Ui {
 class makingScreen;
 }
@@ -21,6 +21,7 @@ public:
     void strongScreen();
 private:
     Ui::makingScreen *ui;
+    QMovie* coffeeMovie;
 };
 
 #endif // MAKINGSCREEN_H
