@@ -38,7 +38,8 @@ status::~status()
     delete ui;
 }
 
-void status::on_pushButton_clicked()
+
+void status::on_Exit_clicked()
 {
-    this->close();
+    deleteLater();
 }

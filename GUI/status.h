@@ -16,7 +16,9 @@ public:
     ~status();
     void doStatusScreen(int conStatus);
 private slots:
-    void on_pushButton_clicked();
+
+
+    void on_Exit_clicked();
 
 private:
     Ui::status *ui;

@@ -11,11 +11,12 @@ SPI_worker::SPI_worker()
 SPI_worker::~SPI_worker()
 {
     qDebug() << "SPI worker nedlagt" << endl;
+    delete Psocif;
 }
 
 void SPI_worker::sendChoice(int choice)
 {
-    psocif* Psocif = new psocif();
+    Psocif = new psocif();
     qDebug() << "Valgte vaerdi: " << choice << endl;
 
     if(Psocif->sendCommand(choice)==true)
@@ -34,7 +35,7 @@ void SPI_worker::sendChoice(int choice)
 
 void SPI_worker::containerStatus()
 {
-    psocif* Psocif = new psocif();
+    Psocif = new psocif();
     int conStatus = Psocif->readStatus();
 
     qDebug() << "Vaerdien fra PSOC cointainer status:" << conStatus <<endl;

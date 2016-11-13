@@ -6,6 +6,8 @@
 #include "QPixmap"
 #include "database.h"
 #include "QString"
+#include "QTimer"
+#include "qdebug.h"
 statistik::statistik(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::statistik)
@@ -17,13 +19,15 @@ statistik::statistik(QWidget *parent) :
 
     databaseRead(dataArray,5);
     setLabels();
+    if(total_!=0)
     makePie();
 
-
+     QTimer::singleShot(10000,this,SLOT(deleteLater()));
 }
 
 statistik::~statistik()
 {
+    qDebug() << "Statistik nedlagt" <<endl;
     delete ui;
 }
 
@@ -39,38 +43,38 @@ void statistik::makePie()
     int lastPosition = 0;
 
     //Normalkaffe
-    painter.setBrush(Qt::red);
+    painter.setBrush(QColor(231,76,60));
     painter.drawPie(size,lastPosition,countProcent(dataArray,0)*3.6*16);
-    ui->NormalColor->setStyleSheet("background-color:red;");
+    ui->NormalColor->setStyleSheet("background:rgb(231,76,60);");
 
     lastPosition += countProcent(dataArray,0)*3.6*16;
 
     //Weak kaffe
-    painter.setBrush(Qt::blue);
+    painter.setBrush(QColor(52,152,219));
     painter.drawPie(size,lastPosition,countProcent(dataArray,1)*3.6*16);
-    ui->WeakColor->setStyleSheet("background-color:blue;");
+    ui->WeakColor->setStyleSheet("background:rgb(52,152,219);");
 
     lastPosition += countProcent(dataArray,1)*3.6*16;
 
     //strong kaffe
-    painter.setBrush(Qt::darkGray);
-    painter.drawPie(size,lastPosition,countProcent(dataArray,1)*3.6*16);
-    ui->StrongColor->setStyleSheet("background-color:darkGray;");
+    painter.setBrush(QColor(155,89,182));
+    painter.drawPie(size,lastPosition,countProcent(dataArray,2)*3.6*16);
+    ui->StrongColor->setStyleSheet("background:rgb(155,89,182);");
 
     lastPosition += countProcent(dataArray,2)*3.6*16;
 
 
     //Water kaffe
-    painter.setBrush(Qt::yellow);
-    painter.drawPie(size,lastPosition,3.6*countProcent(dataArray,3)*16);
-    ui->WaterColor->setStyleSheet("background-color:yellow;");
+    painter.setBrush(QColor(230,126,34));
+    painter.drawPie(size,lastPosition,countProcent(dataArray,3)*3.6*16);
+    ui->WaterColor->setStyleSheet("background:rgb(230,126,34);");
 
     lastPosition += countProcent(dataArray,3)*3.6*16;
 
     //Favorite kaffe
-    painter.setBrush(Qt::darkGreen);
+    painter.setBrush(QColor(39,174,96));
     painter.drawPie(size,lastPosition,3.6*countProcent(dataArray,4)*16);
-    ui->FavoriteColor->setStyleSheet("background-color:darkGreen;");
+    ui->FavoriteColor->setStyleSheet("background:rgb(39,174,96);");
 
     this->ui->PieLabel->setPixmap(pixmap);
 
@@ -102,7 +106,6 @@ float statistik::countProcent(int *dataArray,int index)
 
 void statistik::on_Exit_clicked()
 {
-   QWidget::close();
-
+   deleteLater();
 }
 

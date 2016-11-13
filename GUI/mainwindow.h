@@ -38,6 +38,8 @@ private slots:
     void setConStatus(int conStatus);
 
 
+    void on_admin_Button_clicked();
+
 signals:
     void sendChoice(int choice);
     void startStatus();

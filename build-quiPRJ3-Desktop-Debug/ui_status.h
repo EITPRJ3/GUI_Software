@@ -25,7 +25,7 @@ class Ui_status
 public:
     QLabel *water_cointainer;
     QLabel *coffee_container;
-    QPushButton *pushButton;
+    QPushButton *Exit;
 
     void setupUi(QWidget *status)
     {
@@ -39,9 +39,9 @@ public:
         coffee_container = new QLabel(status);
         coffee_container->setObjectName(QString::fromUtf8("coffee_container"));
         coffee_container->setGeometry(QRect(260, 20, 261, 271));
-        pushButton = new QPushButton(status);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(20, 230, 80, 23));
+        Exit = new QPushButton(status);
+        Exit->setObjectName(QString::fromUtf8("Exit"));
+        Exit->setGeometry(QRect(20, 240, 80, 23));
 
         retranslateUi(status);
 
@@ -53,7 +53,7 @@ public:
         status->setWindowTitle(QApplication::translate("status", "Form", 0, QApplication::UnicodeUTF8));
         water_cointainer->setText(QString());
         coffee_container->setText(QString());
-        pushButton->setText(QApplication::translate("status", "Exit", 0, QApplication::UnicodeUTF8));
+        Exit->setText(QApplication::translate("status", "Exit", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

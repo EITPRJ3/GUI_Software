@@ -10,6 +10,7 @@
 #include "status.h"
 #include "QtCore"
 #include "database.h"
+#include "admin.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,7 +30,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_tmpExit_clicked()
 {
-    exit(1);
+    close();
 }
 
 
@@ -51,11 +52,13 @@ void MainWindow::on_normalCoffee_clicked()
     makingScreen* screen = new makingScreen;
 
     if(status_)
+    {
         screen->init(cmd = 1);
+        databaseCountUp(0);
+        databaseCountUp(4);
+    }
     else
         screen->init(cmd = 3);
-
-    databaseCountUp(0);
 }
 
 
@@ -67,11 +70,12 @@ void MainWindow::on_waterButton_clicked()
     makingScreen* screen = new makingScreen;
 
     if(status_)
+    {
         screen->init(cmd = 1);
+        databaseCountUp(3);
+    }
     else
         screen->init(cmd = 3);
-
-    databaseCountUp(3);
 }
 
 void MainWindow::on_weakCoffee_clicked()
@@ -82,11 +86,14 @@ void MainWindow::on_weakCoffee_clicked()
     makingScreen* screen = new makingScreen;
 
     if(status_)
+    {
         screen->init(cmd = 1);
+        databaseCountUp(1);
+    }
     else
         screen->init(cmd = 3);
 
-    databaseCountUp(1);
+
 
 }
 
@@ -99,12 +106,14 @@ void MainWindow::on_strongCoffee_clicked()
 
 
     if(status_)
+    {
         screen->init(cmd = 4);
-
+        databaseCountUp(2);
+    }
     else
         screen->init(cmd = 3);
 
-    databaseCountUp(2);
+
 }
 
 void MainWindow::commHelper(int cmd)
@@ -155,4 +164,11 @@ void MainWindow::on_favoriteCoffee_clicked()
 
    statusScreen->doStatusScreen(conStatus_);
 
+}
+
+
+void MainWindow::on_admin_Button_clicked()
+{
+    admin* adminScr = new admin;
+    adminScr->show();
 }

@@ -2,7 +2,7 @@
 #define SPI_WORKER_H
 #include "QObject"
 #include "QThread"
-
+#include "psocif.h"
 class SPI_worker : public QObject
 {
     Q_OBJECT
@@ -21,6 +21,7 @@ signals:
     void containerStatus(int conStatus);
 private:
     int chosen;
+    psocif* Psocif;
 };
 
 #endif // SPI_WORKER_H

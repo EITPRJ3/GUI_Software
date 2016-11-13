@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     spi_worker.cpp \
     makingscreen.cpp \
     status.cpp \
-    database.cpp
+    database.cpp \
+    admin.cpp
 
 HEADERS  += mainwindow.h \
     psocif.h \
@@ -27,12 +28,14 @@ HEADERS  += mainwindow.h \
     spi_worker.h \
     makingscreen.h \
     status.h \
-    database.h
+    database.h \
+    admin.h
 
 FORMS    += mainwindow.ui \
     statistik.ui \
     makingscreen.ui \
-    status.ui
+    status.ui \
+    admin.ui
 
 target.path = /home/root/$${TARGET}
 INSTALL += target
