@@ -361,7 +361,7 @@ public:
         weakCoffee->setText(QApplication::translate("MainWindow", "Svag kaffe", 0, QApplication::UnicodeUTF8));
         normalCoffee->setText(QApplication::translate("MainWindow", "Alm. Kaffe", 0, QApplication::UnicodeUTF8));
         strongCoffee->setText(QApplication::translate("MainWindow", "St\303\246rk kaffe", 0, QApplication::UnicodeUTF8));
-        favoriteCoffee->setText(QApplication::translate("MainWindow", "Status", 0, QApplication::UnicodeUTF8));
+        favoriteCoffee->setText(QApplication::translate("MainWindow", "Favoritten", 0, QApplication::UnicodeUTF8));
         statistik->setText(QApplication::translate("MainWindow", "Statistik", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

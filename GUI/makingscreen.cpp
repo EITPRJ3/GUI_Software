@@ -1,7 +1,6 @@
 #include "makingscreen.h"
 #include "ui_makingscreen.h"
 #include <QTimer>
-#include <iostream>
 #include <QSize>
 #include "qdebug.h"
 
@@ -30,24 +29,30 @@ void makingScreen::init(int value)
 
     switch(value)
     {
+     case 0:
+        NormalCoffeeScreen();
+        break;
      case 1:
-        coffeeScreen();
+        weakScreen();
         break;
      case 2:
+        strongScreen();
+        break;
+     case 3:
         waterScreen();
         break;
-
-     case 3:
+     case 4:
+        favoriteScreen();
+        break;
+     case 5:
         failedScreen();
         break;
-
-     case 4:
-        strongScreen();
+    default:
         break;
     }
 }
 
-void makingScreen::coffeeScreen()
+void makingScreen::NormalCoffeeScreen()
 {
     coffeeMovie = new QMovie(":/test/coffee.gif");
     ui->screen->setMovie(coffeeMovie);
@@ -72,7 +77,17 @@ void makingScreen::failedScreen()
     ui->screen->setMovie(coffeeMovie);
     coffeeMovie->setScaledSize(QSize(475,330));
     coffeeMovie->start();
-    ui->makingText->setText("Din kaffe fejlede - Kontakt pedellen");
+    ui->makingText->setText("Din kaffe fejlede - Kontakt service manden");
+    QTimer::singleShot(3000,this,SLOT(deleteLater()));
+}
+
+void makingScreen::weakScreen()
+{
+    coffeeMovie = new QMovie(":/test/CoffeeTime.gif");
+    ui->screen->setMovie(coffeeMovie);
+    coffeeMovie->setScaledSize(QSize(300,300));
+    coffeeMovie->start();
+    ui->makingText->hide();
     QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }
 
@@ -82,6 +97,16 @@ void makingScreen::strongScreen()
     ui->screen->setMovie(coffeeMovie);
     coffeeMovie->setScaledSize(QSize(475,400));
     coffeeMovie->start();
-    ui->makingText->setText("Din kaffe brygges");
+    ui->makingText->setText("Din STRONGE kaffe brygges");
+    QTimer::singleShot(3000,this,SLOT(deleteLater()));
+}
+
+void makingScreen::favoriteScreen()
+{
+    coffeeMovie = new QMovie(":/test/HappyCoffee.gif");
+    ui->screen->setMovie(coffeeMovie);
+    coffeeMovie->setScaledSize(QSize(250,250));
+    coffeeMovie->start();
+    ui->makingText->setText("Den mest popular kaffe brygges");
     QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }

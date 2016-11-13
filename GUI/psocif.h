@@ -3,12 +3,12 @@
 
 class psocif
 {
-    public:
-        psocif();
-        ~psocif();
-        bool sendCommand(int cmd);
-        char readCommand();
-        char readStatus();
+public:
+    psocif();
+    ~psocif();
+    bool sendCommand(int cmd);
+    char readCommand();
+    char readStatus();
     protected:
     private:
 };

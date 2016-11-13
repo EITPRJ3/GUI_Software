@@ -10,15 +10,16 @@ class makingScreen;
 class makingScreen : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit makingScreen(QWidget *parent = 0);
     ~makingScreen();
     void init(int value);
-    void coffeeScreen();
+    void NormalCoffeeScreen();
     void waterScreen();
     void failedScreen();
+    void weakScreen();
     void strongScreen();
+    void favoriteScreen();
 private:
     Ui::makingScreen *ui;
     QMovie* coffeeMovie;

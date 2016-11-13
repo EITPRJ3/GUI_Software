@@ -9,7 +9,6 @@ class statistik;
 class statistik : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit statistik(QWidget *parent = 0);
     ~statistik();

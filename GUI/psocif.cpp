@@ -25,7 +25,6 @@ bool psocif::sendCommand(int cmd)
     write(fd, cmd_, strlen("1"));
     close(fd);
 
-
     int a= rand() % 2;
     qDebug() << "Psoc returner " << a <<endl;
     return a;

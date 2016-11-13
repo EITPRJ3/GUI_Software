@@ -1,6 +1,5 @@
 #include "spi_worker.h"
 #include <QDebug>
-#include "psocif.h"
 #include <QTimer>
 
 SPI_worker::SPI_worker()

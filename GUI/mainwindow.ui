@@ -497,7 +497,7 @@
  }</string>
          </property>
          <property name="text">
-          <string>Status</string>
+          <string>Favoritten</string>
          </property>
         </widget>
        </item>

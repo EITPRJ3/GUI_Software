@@ -22,25 +22,30 @@ static const uint qt_meta_data_admin[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+       7,    6,    6,    6, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-       7,    6,    6,    6, 0x08,
-      25,    6,    6,    6, 0x08,
-      52,    6,    6,    6, 0x08,
+      21,    6,    6,    6, 0x08,
+      39,    6,    6,    6, 0x08,
+      66,    6,    6,    6, 0x08,
+      96,   86,    6,    6, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_admin[] = {
-    "admin\0\0on_Exit_clicked()\0"
+    "admin\0\0startStatus()\0on_Exit_clicked()\0"
     "on_clearDatabase_clicked()\0"
-    "on_Status_clicked()\0"
+    "on_Status_clicked()\0conStatus\0"
+    "setConStatus(int)\0"
 };
 
 void admin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -49,13 +54,14 @@ void admin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         Q_ASSERT(staticMetaObject.cast(_o));
         admin *_t = static_cast<admin *>(_o);
         switch (_id) {
-        case 0: _t->on_Exit_clicked(); break;
-        case 1: _t->on_clearDatabase_clicked(); break;
-        case 2: _t->on_Status_clicked(); break;
+        case 0: _t->startStatus(); break;
+        case 1: _t->on_Exit_clicked(); break;
+        case 2: _t->on_clearDatabase_clicked(); break;
+        case 3: _t->on_Status_clicked(); break;
+        case 4: _t->setConStatus((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData admin::staticMetaObjectExtraData = {
@@ -90,10 +96,16 @@ int admin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 5;
     }
     return _id;
+}
+
+// SIGNAL 0
+void admin::startStatus()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
 }
 QT_END_MOC_NAMESPACE

@@ -9,5 +9,7 @@
         <file>test/bottled-yes.png</file>
         <file>test/coffee_container_yes.png</file>
         <file>test/coffee_container_no.png</file>
+        <file>test/HappyCoffee.gif</file>
+        <file>test/CoffeeTime.gif</file>
     </qresource>
 </RCC>

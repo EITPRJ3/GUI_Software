@@ -7,7 +7,6 @@
 #include "database.h"
 #include "QString"
 #include "QTimer"
-#include "qdebug.h"
 statistik::statistik(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::statistik)
