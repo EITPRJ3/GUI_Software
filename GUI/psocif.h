@@ -6,9 +6,10 @@ class psocif
 public:
     psocif();
     ~psocif();
-    bool sendCommand(int cmd);
+    void sendCommand(int cmd);
     char readCommand();
     char readStatus();
+    bool readyStatus();
     protected:
     private:
 };

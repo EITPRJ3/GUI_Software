@@ -17,7 +17,7 @@ psocif::~psocif()
     //dtor
 }
 
-bool psocif::sendCommand(int cmd)
+void psocif::sendCommand(int cmd)
 {
     char cmd_[5];
     sprintf(cmd_, "%d", cmd);
@@ -25,17 +25,28 @@ bool psocif::sendCommand(int cmd)
     write(fd, cmd_, strlen("1"));
     close(fd);
 
-    int a= rand() % 2;
-    qDebug() << "Psoc returner " << a <<endl;
-    return a;
 }
 
 char psocif::readCommand()
 {
+    /*
+    char data[2];
+    int fd = open("/dev/psoc_1",O_RDONLY);
+    */
+
+
     return 0;
 }
+
 
 char psocif::readStatus()
 {
     return 0;
+}
+
+bool psocif::readyStatus()
+{
+    int a= rand() % 2;
+    qDebug() << "Psoc returner " << a <<endl;
+    return a;
 }

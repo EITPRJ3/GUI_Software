@@ -22,7 +22,7 @@ static const uint qt_meta_data_admin[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -37,6 +37,7 @@ static const uint qt_meta_data_admin[] = {
       39,    6,    6,    6, 0x08,
       66,    6,    6,    6, 0x08,
       96,   86,    6,    6, 0x08,
+     114,    6,    6,    6, 0x08,
 
        0        // eod
 };
@@ -45,7 +46,7 @@ static const char qt_meta_stringdata_admin[] = {
     "admin\0\0startStatus()\0on_Exit_clicked()\0"
     "on_clearDatabase_clicked()\0"
     "on_Status_clicked()\0conStatus\0"
-    "setConStatus(int)\0"
+    "setConStatus(int)\0on_Mail_clicked()\0"
 };
 
 void admin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -59,6 +60,7 @@ void admin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 2: _t->on_clearDatabase_clicked(); break;
         case 3: _t->on_Status_clicked(); break;
         case 4: _t->setConStatus((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 5: _t->on_Mail_clicked(); break;
         default: ;
         }
     }
@@ -96,9 +98,9 @@ int admin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

@@ -1,8 +1,8 @@
 #ifndef MAKINGSCREEN_H
 #define MAKINGSCREEN_H
-
 #include <QWidget>
 #include "QMovie"
+
 namespace Ui {
 class makingScreen;
 }

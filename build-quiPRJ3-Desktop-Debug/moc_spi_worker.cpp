@@ -22,7 +22,7 @@ static const uint qt_meta_data_SPI_worker[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,8 +36,7 @@ static const uint qt_meta_data_SPI_worker[] = {
 
  // slots: signature, parameters, type, tag, flags
       81,   74,   11,   11, 0x0a,
-      96,   74,   11,   11, 0x0a,
-     112,   11,   11,   11, 0x0a,
+      97,   11,   11,   11, 0x0a,
 
        0        // eod
 };
@@ -45,8 +44,7 @@ static const uint qt_meta_data_SPI_worker[] = {
 static const char qt_meta_stringdata_SPI_worker[] = {
     "SPI_worker\0\0finished()\0status\0"
     "succes(bool)\0conStatus\0containerStatus(int)\0"
-    "choice\0setChoice(int)\0sendChoice(int)\0"
-    "containerStatus()\0"
+    "choice\0sendChoice(int)\0containerStatus()\0"
 };
 
 void SPI_worker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -58,9 +56,8 @@ void SPI_worker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->finished(); break;
         case 1: _t->succes((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 2: _t->containerStatus((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 3: _t->setChoice((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 4: _t->sendChoice((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->containerStatus(); break;
+        case 3: _t->sendChoice((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->containerStatus(); break;
         default: ;
         }
     }
@@ -98,9 +95,9 @@ int SPI_worker::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 5;
     }
     return _id;
 }

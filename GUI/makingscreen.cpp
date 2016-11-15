@@ -30,16 +30,16 @@ void makingScreen::init(int value)
     switch(value)
     {
      case 0:
-        NormalCoffeeScreen();
+        waterScreen();
         break;
      case 1:
         weakScreen();
         break;
      case 2:
-        strongScreen();
+        NormalCoffeeScreen();
         break;
      case 3:
-        waterScreen();
+        strongScreen();
         break;
      case 4:
         favoriteScreen();
@@ -106,6 +106,7 @@ void makingScreen::favoriteScreen()
     coffeeMovie = new QMovie(":/test/HappyCoffee.gif");
     ui->screen->setMovie(coffeeMovie);
     coffeeMovie->setScaledSize(QSize(250,250));
+
     coffeeMovie->start();
     ui->makingText->setText("Den mest popular kaffe brygges");
     QTimer::singleShot(3000,this,SLOT(deleteLater()));

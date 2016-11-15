@@ -41,32 +41,32 @@ void statistik::makePie()
 
     int lastPosition = 0;
 
-    //Normalkaffe
-    painter.setBrush(QColor(231,76,60));
+    //Water kaffe
+    painter.setBrush(QColor(52,152,219));
     painter.drawPie(size,lastPosition,countProcent(dataArray,0)*3.6*16);
-    ui->NormalColor->setStyleSheet("background:rgb(231,76,60);");
+    ui->WaterColor->setStyleSheet("background:rgb(52,152,219);");
 
     lastPosition += countProcent(dataArray,0)*3.6*16;
 
     //Weak kaffe
-    painter.setBrush(QColor(52,152,219));
+    painter.setBrush(QColor(155,89,182));
     painter.drawPie(size,lastPosition,countProcent(dataArray,1)*3.6*16);
-    ui->WeakColor->setStyleSheet("background:rgb(52,152,219);");
+    ui->WeakColor->setStyleSheet("background:rgb(155,89,182);");
 
     lastPosition += countProcent(dataArray,1)*3.6*16;
 
-    //strong kaffe
-    painter.setBrush(QColor(155,89,182));
+    //Normalkaffe
+    painter.setBrush(QColor(231,76,60));
     painter.drawPie(size,lastPosition,countProcent(dataArray,2)*3.6*16);
-    ui->StrongColor->setStyleSheet("background:rgb(155,89,182);");
+    ui->NormalColor->setStyleSheet("background:rgb(231,76,60);");
 
     lastPosition += countProcent(dataArray,2)*3.6*16;
 
 
-    //Water kaffe
+    //strong kaffe
     painter.setBrush(QColor(230,126,34));
     painter.drawPie(size,lastPosition,countProcent(dataArray,3)*3.6*16);
-    ui->WaterColor->setStyleSheet("background:rgb(230,126,34);");
+    ui->StrongColor->setStyleSheet("background:rgb(230,126,34);");
 
     lastPosition += countProcent(dataArray,3)*3.6*16;
 
@@ -89,11 +89,10 @@ void statistik::setLabels()
     }
 
     total_ = tmpData;
-
-    ui->NormalLabel->setText("Antal normal kopper: " + QString::number(dataArray[0]) + " stk - " + QString::number((countProcent(dataArray,0)),'g',3) + "%");
+    ui->WaterLabel->setText("Antal varm vand kopper: " + QString::number(dataArray[0]) + " stk-" + QString::number((countProcent(dataArray,0)),'g',3) + "%");
     ui->WeakLabel->setText("Antal svage kopper: " + QString::number(dataArray[1]) + " stk - " + QString::number((countProcent(dataArray,1)),'g',3) + "%");
-    ui->StrongLabel->setText("Antal st\x91rke kopper: " + QString::number(dataArray[2]) + " stk - " + QString::number((countProcent(dataArray,2)),'g',3) + "%");
-    ui->WaterLabel->setText("Antal varm vand kopper: " + QString::number(dataArray[3]) + " stk-" + QString::number((countProcent(dataArray,3)),'g',3) + "%");
+    ui->NormalLabel->setText("Antal normal kopper: " + QString::number(dataArray[2]) + " stk - " + QString::number((countProcent(dataArray,2)),'g',3) + "%");
+    ui->StrongLabel->setText("Antal st\x91rke kopper: " + QString::number(dataArray[3]) + " stk - " + QString::number((countProcent(dataArray,3)),'g',3) + "%");
     ui->FavoriteLabel->setText("Antal favorit kopper: " + QString::number(dataArray[4]) + " stk - " + QString::number((countProcent(dataArray,4)),'g',3) + "%");
     ui->TotalAntal->setText("Total antal lavet: " + QString::number(total_));
 }

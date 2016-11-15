@@ -7,13 +7,16 @@
 #include "database.h"
 #include "admin.h"
 #include <QThread>
+#include "QList"
+
+int threads = 0;
 
 enum CoffeTabel
 {
-    NORMALCOFFEE = 0,
+    HOTWATER = 0,
     WEAKCOFFEE = 1,
-    STRONGCOFFEE = 2,
-    HOTWATER = 3,
+    NORMALCOFFEE = 2,
+    STRONGCOFFEE = 3,
     FAVORITE = 4,
     FAILEDSCREEN = 5,
 };
@@ -28,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowFlags(Qt::FramelessWindowHint);
 
     createDatabase();
+    qDebug() << "Thread id kaldt fra MainWindow constructor: " << QThread::currentThreadId() << endl;
 }
 
 MainWindow::~MainWindow()
@@ -51,10 +55,9 @@ void MainWindow::on_statistik_clicked()
 
 void MainWindow::on_normalCoffee_clicked()
 {
-    commHelper(NORMALCOFFEE);
     makingScreen* screen = new makingScreen;
 
-    if(status_)
+    if(commHelper(NORMALCOFFEE))
     {
         screen->init(NORMALCOFFEE);
         databaseCountUp(NORMALCOFFEE);
@@ -66,10 +69,9 @@ void MainWindow::on_normalCoffee_clicked()
 
 void MainWindow::on_waterButton_clicked()
 {
-    commHelper(HOTWATER);
     makingScreen* screen = new makingScreen;
 
-    if(status_)
+    if(commHelper(HOTWATER))
     {
         screen->init(HOTWATER);
         databaseCountUp(HOTWATER);
@@ -80,10 +82,9 @@ void MainWindow::on_waterButton_clicked()
 
 void MainWindow::on_weakCoffee_clicked()
 {
-    commHelper(WEAKCOFFEE);
     makingScreen* screen = new makingScreen;
 
-    if(status_)
+    if(commHelper(WEAKCOFFEE))
     {
         screen->init(WEAKCOFFEE);
         databaseCountUp(WEAKCOFFEE);
@@ -94,9 +95,11 @@ void MainWindow::on_weakCoffee_clicked()
 
 void MainWindow::on_strongCoffee_clicked()
 {
-    commHelper(STRONGCOFFEE);
+    QThread::currentThread()->children();
+
     makingScreen* screen = new makingScreen;
-    if(status_)
+
+    if(commHelper(STRONGCOFFEE))
     {
         screen->init(STRONGCOFFEE);
         databaseCountUp(STRONGCOFFEE);
@@ -105,32 +108,33 @@ void MainWindow::on_strongCoffee_clicked()
         screen->init(FAILEDSCREEN);
 }
 
-void MainWindow::commHelper(int cmd)
+bool MainWindow::commHelper(int cmd)
 {
-    QThread *thread = new QThread;
-    SPI_worker* worker = new SPI_worker();
+    SPI_worker* Worker = new SPI_worker;
 
-    worker->doSetup(*thread);
-    worker->moveToThread(thread);
+    if(Worker->checkReady())
+    {
+    QThread* newThread = new QThread;
 
-    connect(this, SIGNAL(sendChoice(int)), worker, SLOT(sendChoice(int)),Qt::DirectConnection);
-    connect(worker,SIGNAL(succes(bool)),this,SLOT(setSucces(bool)),Qt::DirectConnection);
+    Worker->doSetup(*newThread);
+    Worker->moveToThread(newThread);
+    connect(this, SIGNAL(choice(int)), Worker, SLOT(sendChoice(int)),Qt::DirectConnection);
 
-    thread->start();
-    emit sendChoice(cmd);
-}
+    newThread->start();
+    emit choice(cmd);
 
-void MainWindow::setSucces(bool status)
-{
-    status_ = status;
+    return true;
+    }
+    else
+        return false;
+
 }
 
 void MainWindow::on_favoriteCoffee_clicked()
 {
-   commHelper(mostPopularCoffee());
-
    makingScreen* screen = new makingScreen;
-   if(status_)
+
+   if(commHelper(mostPopularCoffee()))
    {
        screen->init(FAVORITE);
        databaseCountUp(FAVORITE);
@@ -148,12 +152,12 @@ void MainWindow::on_admin_Button_clicked()
 
 int MainWindow::mostPopularCoffee()
 {
-    int tmpArray[3];
-    int mostPopular=0;
+    int tmpArray[4];
+    int mostPopular=1;
 
-    databaseRead(tmpArray,3);
+    databaseRead(tmpArray,4);
 
-    for(int i = 1; i < 3; i++)
+    for(int i = 2; i < 4; i++)
     {
        if(tmpArray[i]>tmpArray[mostPopular])
        {

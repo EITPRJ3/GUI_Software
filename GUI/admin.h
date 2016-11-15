@@ -19,6 +19,8 @@ private slots:
     void on_clearDatabase_clicked();
     void on_Status_clicked();
     void setConStatus(int conStatus);
+    void on_Mail_clicked();
+
 signals:
     void startStatus();
 private:

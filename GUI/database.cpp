@@ -51,7 +51,6 @@ void databaseCountUp(int line)
     {
         QString dataString = mDatabase.readLine();
         data[i] = dataString.toInt();
-        qDebug() << data[i] << endl;
     }
 
     data[line] += 1;

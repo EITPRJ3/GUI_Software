@@ -6,6 +6,8 @@
 #include "mainwindow.h"
 #include "spi_worker.h"
 #include "QThread"
+#include "QProcess"
+#include "QStringList"
 
 admin::admin(QWidget *parent) :
     QWidget(parent),
@@ -27,7 +29,7 @@ void admin::getContainerStatus()
     QThread *thread = new QThread;
     SPI_worker *worker = new SPI_worker();
 
-    worker->doConStatusSetup(*thread);
+    worker->doSetup(*thread);
     worker->moveToThread(thread);
 
     connect(worker,SIGNAL(containerStatus(int)),this,SLOT(setConStatus(int)),Qt::DirectConnection);
@@ -57,4 +59,11 @@ void admin::on_Status_clicked()
 void admin::setConStatus(int conStatus)
 {
     conStatus_ = conStatus;
+}
+
+void admin::on_Mail_clicked()
+{
+    QProcess* proces = new QProcess;
+    proces->setWorkingDirectory("/home/stud/Documents/PRJ3/MAIL");
+    proces->start("/bin/sh",QStringList() << "./waterEmpty.sh");
 }

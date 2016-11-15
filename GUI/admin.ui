@@ -52,6 +52,19 @@
     <string>Exit</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="Mail">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>180</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Mail</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
