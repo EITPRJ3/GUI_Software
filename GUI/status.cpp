@@ -19,6 +19,9 @@ void status::doStatusScreen(int conStatus)
     switch(conStatus)
     {
     case 0:
+
+        //NOTE Der mangler status vinduer. Yderligere funktioner til de enkelte cases.
+
         QPixmap coffeeMap(":/test/bottled-yes.png");
         QPixmap CoffeePix = coffeeMap.scaledToWidth(150);
 

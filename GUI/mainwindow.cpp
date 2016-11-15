@@ -7,9 +7,6 @@
 #include "database.h"
 #include "admin.h"
 #include <QThread>
-#include "QList"
-
-int threads = 0;
 
 enum CoffeTabel
 {
@@ -95,8 +92,6 @@ void MainWindow::on_weakCoffee_clicked()
 
 void MainWindow::on_strongCoffee_clicked()
 {
-    QThread::currentThread()->children();
-
     makingScreen* screen = new makingScreen;
 
     if(commHelper(STRONGCOFFEE))
@@ -153,17 +148,18 @@ void MainWindow::on_admin_Button_clicked()
 int MainWindow::mostPopularCoffee()
 {
     int tmpArray[4];
-    int mostPopular=1;
+    int mostPopular=WEAKCOFFEE;
 
     databaseRead(tmpArray,4);
 
-    for(int i = 2; i < 4; i++)
+    for(int i = NORMALCOFFEE; i <= STRONGCOFFEE; i++)
     {
        if(tmpArray[i]>tmpArray[mostPopular])
        {
             mostPopular=i;
        }
     }
+    qDebug() << "Most popular" << mostPopular << endl;
     return mostPopular;
 }
 
