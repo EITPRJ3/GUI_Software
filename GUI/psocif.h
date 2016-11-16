@@ -10,6 +10,7 @@ public:
     char readCommand();
     char readStatus();
     bool readyStatus();
+    bool makingDone();
     protected:
     private:
 };

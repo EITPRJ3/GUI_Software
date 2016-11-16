@@ -7,6 +7,9 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include "QDebug"
+#include <unistd.h>
+#include "QThread"
+
 psocif::psocif()
 {
     //ctor
@@ -49,4 +52,11 @@ bool psocif::readyStatus()
     int a= rand() % 2;
     qDebug() << "Psoc returner " << a <<endl;
     return a;
+}
+
+bool psocif::makingDone()
+{
+
+    sleep(3);
+    return true;
 }

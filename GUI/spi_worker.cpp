@@ -16,12 +16,15 @@ SPI_worker::~SPI_worker()
 
 void SPI_worker::sendChoice(int choice)
 {
+    qDebug() << "SPI worker thread id" << QThread::currentThreadId() <<endl;
     Psocif = new psocif();
     qDebug() << "Valgte vaerdi: " << choice << endl;
     Psocif->sendCommand(choice);
+
+    if(Psocif->makingDone())
     emit finished();
 
-    qDebug() << "SPI worker thread id" << QObject::thread()->currentThreadId() <<endl;
+
 }
 
 void SPI_worker::containerStatus()

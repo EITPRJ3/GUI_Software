@@ -14,7 +14,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    bool commHelper(int cmd);
+    void commHelper(int cmd);
 private slots:
     void on_tmpExit_clicked();
     void on_statistik_clicked();

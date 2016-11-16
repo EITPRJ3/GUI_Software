@@ -8,6 +8,7 @@
 #include "admin.h"
 #include <QThread>
 
+
 enum CoffeTabel
 {
     HOTWATER = 0,
@@ -18,8 +19,7 @@ enum CoffeTabel
     FAILEDSCREEN = 5,
 };
 
-
-
+//http://blog.debao.me/2013/08/how-to-use-qthread-in-the-right-way-part-1/
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -52,21 +52,13 @@ void MainWindow::on_statistik_clicked()
 
 void MainWindow::on_normalCoffee_clicked()
 {
-    makingScreen* screen = new makingScreen;
-
-    if(commHelper(NORMALCOFFEE))
-    {
-        screen->init(NORMALCOFFEE);
-        databaseCountUp(NORMALCOFFEE);
-    }
-    else
-        screen->init(FAILEDSCREEN);
+    commHelper(NORMALCOFFEE);
 }
 
 
 void MainWindow::on_waterButton_clicked()
 {
-    makingScreen* screen = new makingScreen;
+  /*  makingScreen* screen = new makingScreen;
 
     if(commHelper(HOTWATER))
     {
@@ -75,11 +67,12 @@ void MainWindow::on_waterButton_clicked()
     }
     else
         screen->init(FAILEDSCREEN);
+        */
 }
 
 void MainWindow::on_weakCoffee_clicked()
 {
-    makingScreen* screen = new makingScreen;
+  /*  makingScreen* screen = new makingScreen;
 
     if(commHelper(WEAKCOFFEE))
     {
@@ -88,10 +81,12 @@ void MainWindow::on_weakCoffee_clicked()
     }
     else
         screen->init(FAILEDSCREEN);
+        */
 }
 
 void MainWindow::on_strongCoffee_clicked()
 {
+    /*
     makingScreen* screen = new makingScreen;
 
     if(commHelper(STRONGCOFFEE))
@@ -101,32 +96,35 @@ void MainWindow::on_strongCoffee_clicked()
     }
     else
         screen->init(FAILEDSCREEN);
+        */
 }
 
-bool MainWindow::commHelper(int cmd)
+void MainWindow::commHelper(int cmd)
 {
+    makingScreen* screen = new makingScreen;
     SPI_worker* Worker = new SPI_worker;
 
     if(Worker->checkReady())
     {
-    QThread* newThread = new QThread;
+        screen->init(cmd);
+        databaseCountUp(cmd);
 
-    Worker->doSetup(*newThread);
-    Worker->moveToThread(newThread);
-    connect(this, SIGNAL(choice(int)), Worker, SLOT(sendChoice(int)),Qt::DirectConnection);
+       QThread newThread;
 
-    newThread->start();
-    emit choice(cmd);
+        Worker->doSetup(newThread);
+        Worker->moveToThread(&newThread);
+        connect(this, SIGNAL(choice(int)), Worker, SLOT(sendChoice(int)),Qt::DirectConnection);
 
-    return true;
+        newThread.start();
+        emit choice(cmd);
     }
     else
-        return false;
-
+        screen->init(FAILEDSCREEN);
 }
 
 void MainWindow::on_favoriteCoffee_clicked()
 {
+    /*
    makingScreen* screen = new makingScreen;
 
    if(commHelper(mostPopularCoffee()))
@@ -136,6 +134,7 @@ void MainWindow::on_favoriteCoffee_clicked()
    }
    else
        screen->init(FAILEDSCREEN);
+       */
 }
 
 

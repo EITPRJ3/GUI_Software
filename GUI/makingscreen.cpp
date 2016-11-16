@@ -12,6 +12,8 @@ makingScreen::makingScreen(QWidget *parent) :
     this->setStyleSheet("background-color:white;");
     setWindowFlags(Qt::FramelessWindowHint);
 
+    qDebug() << "Making screen oprettet " <<endl;
+    this->show();
 
 }
 
@@ -54,11 +56,12 @@ void makingScreen::init(int value)
 
 void makingScreen::NormalCoffeeScreen()
 {
+    qDebug() << "Normalscreen her" << endl;
     coffeeMovie = new QMovie(":/test/coffee.gif");
     ui->screen->setMovie(coffeeMovie);
     coffeeMovie->start();
     ui->makingText->setText("Din kaffe brygges");
-    QTimer::singleShot(3000,this,SLOT(deleteLater()));
+    QTimer::singleShot(5000,this,SLOT(deleteLater()));
 }
 
 void makingScreen::waterScreen()
