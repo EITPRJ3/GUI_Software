@@ -7,6 +7,7 @@
 #include "database.h"
 #include "admin.h"
 #include <QThread>
+#include "QtCore"
 
 
 enum CoffeTabel
