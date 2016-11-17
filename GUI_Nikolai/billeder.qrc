@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>test/Key.png</file>
+        <file>test/coffee.gif</file>
+        <file>test/tea.gif</file>
+        <file>test/strongCoffee.gif</file>
+        <file>test/sadCoffee.gif</file>
+        <file>test/bottled-water_no.png</file>
+        <file>test/bottled-yes.png</file>
+        <file>test/coffee_container_yes.png</file>
+        <file>test/coffee_container_no.png</file>
+        <file>test/HappyCoffee.gif</file>
+        <file>test/CoffeeTime.gif</file>
+    </qresource>
+</RCC>
