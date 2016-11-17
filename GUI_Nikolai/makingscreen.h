@@ -24,7 +24,7 @@ public:
 private:
     Ui::makingScreen *ui;
     QMovie* coffeeMovie;
-    SpiController controller;
+    SpiController* controller;
 
 };
 

@@ -1,14 +1,4 @@
 #include "psocif.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
-#include "QDebug"
-#include <unistd.h>
-#include "QThread"
 
 psocif::psocif()
 {
@@ -25,39 +15,66 @@ void psocif::sendCommand(int cmd)
     char cmd_[5];
     sprintf(cmd_, "%d", cmd);
     int fd = open("/dev/psoc_1", O_RDWR);
-    write(fd, cmd_, strlen("1"));
+    write(fd, cmd_, strlen("11"));
     close(fd);
 
 }
 
-char psocif::readCommand()
+char psocif::readErrorState()
 {
+    char data[1];
+    getData(&data[0]);
+
+    qDebug() << "Error State: " << data[1] << " : " << data[0] << endl;
+    data[0] = data[0] & 0x3; //Mask output. Set bits 7:2 to 0
+
+    return data[0];
+
+    //return 0;
+}
+
+bool psocif::readyToBrew()
+{
+    char data[5];
+    getData(&data[0]);
+
+    for(int i = 0; i < 5; i++)
+    {
+        qDebug() << "R2B " << i << " : " << +data[i] << endl;
+    }
+    //qDebug() << "readyToBrew: " << +data[1] << " : " << +data[0] << endl;;
+    //data[1] = (data[0] & 0x1C) >> 2; //Flyt function state over i data[1]. Mask bits 7:5 til 0 og 1:0 til 0
+    data[0] &= 0x3; //Mask output. Set bits 7:2 to 0
+    qDebug() << "Data after mask: " << +data[0] << endl;
     /*
-    char data[2];
-    int fd = open("/dev/psoc_1",O_RDONLY);
+    if(data[1] != DONE)
+        return false;
+    if(data[0] != NOERROR)
+        return false;
     */
-
-
-    return 0;
-}
-
-
-char psocif::readStatus()
-{
-    return 0;
-}
-
-bool psocif::readyStatus()
-{
-    int a= rand() % 2;
-    qDebug() << "Psoc returner " << a <<endl;
-    return a;
+    return true;
 }
 
 bool psocif::coffeeDone()
 {
-    if( (rand() % 5) == 1 )
+
+    char data[2];
+    getData(&data[0]);
+    //data[0] = (data[0] & 0x1C) >> 2;
+    qDebug() << "Coffee Done: " << +data[1] << " : " << +data[0] << endl;
+
+    return ( (data[0] & 0x1C) >> 2 ) == DONE;
+
+
+    /*if( (rand() % 5) == 1 )
         return true;
     else
-        return false;
+        return false;*/
+}
+
+void psocif::getData(char* data)
+{
+    int fd = open("/dev/psoc_1",O_RDONLY);
+    read(fd, data, 2);
+    close(fd);
 }

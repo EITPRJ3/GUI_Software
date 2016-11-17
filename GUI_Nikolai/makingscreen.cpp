@@ -11,7 +11,9 @@ makingScreen::makingScreen(QWidget *parent) :
     ui->setupUi(this);
     this->setStyleSheet("background-color:white;");
     setWindowFlags(Qt::FramelessWindowHint);
+    controller = new SpiController();
 
+    connect(controller, SIGNAL(done()), this, SLOT(deleteLater()), Qt::QueuedConnection);
     qDebug() << "Making screen oprettet " <<endl;
     this->show();
 
@@ -22,10 +24,13 @@ makingScreen::~makingScreen()
     qDebug() << "making screen nedlægges" <<endl;
     delete coffeeMovie;
     delete ui;
+    delete controller;
 }
 
 void makingScreen::init(int value)
 {
+    if(value != 5)
+        controller->start(value);
 
     this->show();
 
@@ -70,7 +75,6 @@ void makingScreen::waterScreen()
     coffeeMovie->setScaledSize(QSize(475,300));
     ui->makingText->hide();
     coffeeMovie->start();
-    QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }
 
 void makingScreen::failedScreen()
@@ -90,7 +94,6 @@ void makingScreen::weakScreen()
     coffeeMovie->setScaledSize(QSize(300,300));
     coffeeMovie->start();
     ui->makingText->hide();
-    QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }
 
 void makingScreen::strongScreen()
@@ -100,7 +103,6 @@ void makingScreen::strongScreen()
     coffeeMovie->setScaledSize(QSize(475,400));
     coffeeMovie->start();
     ui->makingText->setText("Din STRONGE kaffe brygges");
-    QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }
 
 void makingScreen::favoriteScreen()
@@ -111,5 +113,4 @@ void makingScreen::favoriteScreen()
 
     coffeeMovie->start();
     ui->makingText->setText("Den mest popular kaffe brygges");
-    QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }

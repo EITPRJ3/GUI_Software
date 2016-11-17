@@ -16,21 +16,23 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     psocif.cpp \
     statistik.cpp \
-    spi_worker.cpp \
     makingscreen.cpp \
     status.cpp \
     database.cpp \
-    admin.cpp
+    admin.cpp \
+    spicontroller.cpp \
+    spiworker.cpp
 
 HEADERS  += mainwindow.h \
     psocif.h \
     statistik.h \
-    spi_worker.h \
     makingscreen.h \
     status.h \
     database.h \
     admin.h \
-    spicontroller.h
+    spicontroller.h \
+    enums.h \
+    spiworker.h
 
 FORMS    += mainwindow.ui \
     statistik.ui \

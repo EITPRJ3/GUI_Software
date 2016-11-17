@@ -7,16 +7,7 @@
 #include "database.h"
 #include "QString"
 #include "QTimer"
-
-enum CoffeTabel
-{
-    HOTWATER = 0,
-    WEAKCOFFEE = 1,
-    NORMALCOFFEE = 2,
-    STRONGCOFFEE = 3,
-    FAVORITE = 4,
-};
-
+#include "enums.h"
 
 statistik::statistik(QWidget *parent) :
     QWidget(parent),

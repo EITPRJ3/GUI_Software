@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "spi_worker.h"
 #include "psocif.h"
 
 namespace Ui {
