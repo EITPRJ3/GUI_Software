@@ -26,7 +26,7 @@ admin::~admin()
 
 void admin::getContainerStatus()
 {
-    QThread *thread = new QThread;
+    QThread *thread = new QThread();
     SPI_worker *worker = new SPI_worker();
 
     worker->doSetup(*thread);

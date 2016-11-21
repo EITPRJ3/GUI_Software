@@ -17,7 +17,7 @@ public:
     void sendCommand(int cmd);
     char readErrorState();
     bool readyToBrew();
-    bool coffeeDone();
+    bool brewingDone();
     void getData(char* data);
     protected:
     private:

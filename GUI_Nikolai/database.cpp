@@ -27,6 +27,7 @@ void createDatabase()
 
 void databaseCountUp(int line)
 {
+    qDebug() << "Database tælles op" <<endl;
     QFile mDatabase(name);
 
     if(!mDatabase.exists())

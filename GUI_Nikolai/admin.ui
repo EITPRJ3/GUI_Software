@@ -49,7 +49,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Exit</string>
+    <string>Tilbage</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Mail">

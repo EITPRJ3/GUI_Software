@@ -8,7 +8,7 @@
 #include "admin.h"
 #include <QThread>
 #include "QtCore"
-
+#include "QCoreApplication"
 
 enum CoffeTabel
 {
@@ -59,45 +59,17 @@ void MainWindow::on_normalCoffee_clicked()
 
 void MainWindow::on_waterButton_clicked()
 {
-  /*  makingScreen* screen = new makingScreen;
-
-    if(commHelper(HOTWATER))
-    {
-        screen->init(HOTWATER);
-        databaseCountUp(HOTWATER);
-    }
-    else
-        screen->init(FAILEDSCREEN);
-        */
+    commHelper(HOTWATER);
 }
 
 void MainWindow::on_weakCoffee_clicked()
 {
-  /*  makingScreen* screen = new makingScreen;
-
-    if(commHelper(WEAKCOFFEE))
-    {
-        screen->init(WEAKCOFFEE);
-        databaseCountUp(WEAKCOFFEE);
-    }
-    else
-        screen->init(FAILEDSCREEN);
-        */
+    commHelper(WEAKCOFFEE);
 }
 
 void MainWindow::on_strongCoffee_clicked()
 {
-    /*
-    makingScreen* screen = new makingScreen;
-
-    if(commHelper(STRONGCOFFEE))
-    {
-        screen->init(STRONGCOFFEE);
-        databaseCountUp(STRONGCOFFEE);
-    }
-    else
-        screen->init(FAILEDSCREEN);
-        */
+    commHelper(STRONGCOFFEE);
 }
 
 void MainWindow::commHelper(int cmd)
@@ -110,13 +82,14 @@ void MainWindow::commHelper(int cmd)
         screen->init(cmd);
         databaseCountUp(cmd);
 
-       QThread newThread;
+        QThread* newThread = new QThread();
 
-        Worker->doSetup(newThread);
-        Worker->moveToThread(&newThread);
-        connect(this, SIGNAL(choice(int)), Worker, SLOT(sendChoice(int)),Qt::DirectConnection);
+        Worker->doSetup(*newThread);
+        Worker->moveToThread(newThread);
+        connect(this, SIGNAL(choice(int)), Worker, SLOT(sendChoice(int)),Qt::QueuedConnection);
+        connect(Worker,SIGNAL(finished()),screen,SLOT(deleteLater()),Qt::QueuedConnection);
+        newThread->start();
 
-        newThread.start();
         emit choice(cmd);
     }
     else
@@ -125,17 +98,7 @@ void MainWindow::commHelper(int cmd)
 
 void MainWindow::on_favoriteCoffee_clicked()
 {
-    /*
-   makingScreen* screen = new makingScreen;
-
-   if(commHelper(mostPopularCoffee()))
-   {
-       screen->init(FAVORITE);
-       databaseCountUp(FAVORITE);
-   }
-   else
-       screen->init(FAILEDSCREEN);
-       */
+    commHelper(mostPopularCoffee());
 }
 
 

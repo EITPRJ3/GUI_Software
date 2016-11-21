@@ -17,7 +17,7 @@ void SPIWorker::operate(int coffeeChoice)
     {
         qDebug() << "Checking if coffee is done" << endl;
         sleep(1);
-        if(psoc->coffeeDone())
+        if(psoc->brewingDone())
         {
             qDebug() << "Coffee Done" << endl;
             emit resultReady();

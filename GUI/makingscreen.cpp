@@ -61,7 +61,6 @@ void makingScreen::NormalCoffeeScreen()
     ui->screen->setMovie(coffeeMovie);
     coffeeMovie->start();
     ui->makingText->setText("Din kaffe brygges");
-    QTimer::singleShot(5000,this,SLOT(deleteLater()));
 }
 
 void makingScreen::waterScreen()
@@ -71,7 +70,6 @@ void makingScreen::waterScreen()
     coffeeMovie->setScaledSize(QSize(475,300));
     ui->makingText->hide();
     coffeeMovie->start();
-    QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }
 
 void makingScreen::failedScreen()
@@ -81,7 +79,6 @@ void makingScreen::failedScreen()
     coffeeMovie->setScaledSize(QSize(475,330));
     coffeeMovie->start();
     ui->makingText->setText("Din kaffe fejlede - Kontakt service manden");
-    QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }
 
 void makingScreen::weakScreen()
@@ -91,7 +88,6 @@ void makingScreen::weakScreen()
     coffeeMovie->setScaledSize(QSize(300,300));
     coffeeMovie->start();
     ui->makingText->hide();
-    QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }
 
 void makingScreen::strongScreen()
@@ -101,7 +97,6 @@ void makingScreen::strongScreen()
     coffeeMovie->setScaledSize(QSize(475,400));
     coffeeMovie->start();
     ui->makingText->setText("Din STRONGE kaffe brygges");
-    QTimer::singleShot(3000,this,SLOT(deleteLater()));
 }
 
 void makingScreen::favoriteScreen()

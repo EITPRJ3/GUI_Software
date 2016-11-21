@@ -55,7 +55,7 @@ bool psocif::readyToBrew()
     return true;
 }
 
-bool psocif::coffeeDone()
+bool psocif::brewingDone()
 {
 
     char data[2];

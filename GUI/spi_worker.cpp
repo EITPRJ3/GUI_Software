@@ -9,7 +9,7 @@ SPI_worker::SPI_worker()
 
 SPI_worker::~SPI_worker()
 {
-    emit(finished());
+    emit finished();
     qDebug() << "SPI worker nedlagt" << endl;
     delete Psocif;
 }
