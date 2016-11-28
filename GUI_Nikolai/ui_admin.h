@@ -25,7 +25,6 @@ public:
     QPushButton *clearDatabase;
     QPushButton *Status;
     QPushButton *Exit;
-    QPushButton *Mail;
 
     void setupUi(QWidget *admin)
     {
@@ -41,9 +40,6 @@ public:
         Exit = new QPushButton(admin);
         Exit->setObjectName(QString::fromUtf8("Exit"));
         Exit->setGeometry(QRect(30, 230, 80, 23));
-        Mail = new QPushButton(admin);
-        Mail->setObjectName(QString::fromUtf8("Mail"));
-        Mail->setGeometry(QRect(210, 180, 80, 23));
 
         retranslateUi(admin);
 
@@ -56,7 +52,6 @@ public:
         clearDatabase->setText(QApplication::translate("admin", "Clear database", 0, QApplication::UnicodeUTF8));
         Status->setText(QApplication::translate("admin", "Status", 0, QApplication::UnicodeUTF8));
         Exit->setText(QApplication::translate("admin", "Tilbage", 0, QApplication::UnicodeUTF8));
-        Mail->setText(QApplication::translate("admin", "Mail", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

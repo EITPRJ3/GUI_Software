@@ -51,9 +51,9 @@ void statistik::makePie()
     lastPosition += countProcent(dataArray,HOTWATER)*3.6*16;
 
     //Weak kaffe
-    painter.setBrush(QColor(155,89,182));
+    painter.setBrush(QColor(39,174,96));
     painter.drawPie(size,lastPosition,countProcent(dataArray,WEAKCOFFEE)*3.6*16);
-    ui->WeakColor->setStyleSheet("background:rgb(155,89,182);");
+    ui->WeakColor->setStyleSheet("background:rgb(39,174,96);");
 
     lastPosition += countProcent(dataArray,WEAKCOFFEE)*3.6*16;
 
@@ -69,13 +69,6 @@ void statistik::makePie()
     painter.setBrush(QColor(230,126,34));
     painter.drawPie(size,lastPosition,countProcent(dataArray,STRONGCOFFEE)*3.6*16);
     ui->StrongColor->setStyleSheet("background:rgb(230,126,34);");
-
-    lastPosition += countProcent(dataArray,STRONGCOFFEE)*3.6*16;
-
-    //Favorite kaffe
-    painter.setBrush(QColor(39,174,96));
-    painter.drawPie(size,lastPosition,3.6*countProcent(dataArray,FAVORITE)*16);
-    ui->FavoriteColor->setStyleSheet("background:rgb(39,174,96);");
 
     this->ui->PieLabel->setPixmap(pixmap);
 
@@ -95,7 +88,6 @@ void statistik::setLabels()
     ui->WeakLabel->setText("Antal svage kopper: " + QString::number(dataArray[WEAKCOFFEE]) + " stk - " + QString::number((countProcent(dataArray,WEAKCOFFEE)),'g',3) + "%");
     ui->NormalLabel->setText("Antal normal kopper: " + QString::number(dataArray[NORMALCOFFEE]) + " stk - " + QString::number((countProcent(dataArray,NORMALCOFFEE)),'g',3) + "%");
     ui->StrongLabel->setText("Antal st\x91rke kopper: " + QString::number(dataArray[STRONGCOFFEE]) + " stk - " + QString::number((countProcent(dataArray,STRONGCOFFEE)),'g',3) + "%");
-    ui->FavoriteLabel->setText("Antal favorit kopper: " + QString::number(dataArray[FAVORITE]) + " stk - " + QString::number((countProcent(dataArray,FAVORITE)),'g',3) + "%");
     ui->TotalAntal->setText("Total antal lavet: " + QString::number(total_));
 }
 

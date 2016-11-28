@@ -18,7 +18,6 @@ private slots:
     void on_Exit_clicked();
     void on_clearDatabase_clicked();
     void on_Status_clicked();
-    void on_Mail_clicked();
 private:
     Ui::admin *ui;
 };

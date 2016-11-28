@@ -39,10 +39,3 @@ void admin::on_Status_clicked()
     status* statusScreen = new status;
     statusScreen->doStatusScreen(psoc->readErrorState());
 }
-
-void admin::on_Mail_clicked()
-{
-    QProcess* proces = new QProcess;
-    proces->setWorkingDirectory("/home/stud/Documents/PRJ3/MAIL");
-    proces->start("/bin/sh",QStringList() << "./waterEmpty.sh");
-}
