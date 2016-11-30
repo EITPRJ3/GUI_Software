@@ -15,6 +15,13 @@ void psocif::sendCommand(int cmd)
     char cmd_[5];
     sprintf(cmd_, "%d", cmd);
     int fd = open("/dev/psoc_1", O_RDWR);
+
+    if(fd < 0)
+    {
+        qDebug() << "Fejl ved Psoc-SendCommand" <<endl;
+        return;
+    }
+
     write(fd, cmd_, strlen("11"));
     close(fd);
 
@@ -23,20 +30,18 @@ void psocif::sendCommand(int cmd)
 char psocif::readErrorState()
 {
     char data[1];
-    getData(&data[0]);
+    if(!getData(&data[0])) return -1;
 
-    qDebug() << "Error State: " << data[1] << " : " << data[0] << endl;
+    qDebug() << "Error State:" << " : " << data[0] << endl;
     data[0] = data[0] & 0x3; //Mask output. Set bits 7:2 to 0
 
     return data[0];
-
-    //return 0;
 }
 
 bool psocif::readyToBrew()
 {
     char data[5];
-    getData(&data[0]);
+    if(!getData(&data[0])) return false;
 
     for(int i = 0; i < 5; i++)
     {
@@ -59,7 +64,8 @@ bool psocif::brewingDone()
 {
 
     char data[2];
-    getData(&data[0]);
+    if(!getData(&data[0])) return false;
+
     //data[0] = (data[0] & 0x1C) >> 2;
     qDebug() << "Coffee Done: " << +data[1] << " : " << +data[0] << endl;
 
@@ -72,9 +78,17 @@ bool psocif::brewingDone()
         return false;*/
 }
 
-void psocif::getData(char* data)
+bool psocif::getData(char* data)
 {
     int fd = open("/dev/psoc_1",O_RDONLY);
+
+    if( fd < 0)
+    {
+        qDebug() << "Fejl opstod ved getData" << endl;
+        return false;
+    }
+
     read(fd, data, 2);
     close(fd);
+    return true;
 }

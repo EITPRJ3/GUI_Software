@@ -14,25 +14,51 @@ status::status(QWidget *parent) :
 
 void status::doStatusScreen(int conStatus)
 {
+    QPixmap coffeeMap;
+    QPixmap waterMap;
+
     this->show();
     qDebug() << conStatus <<endl;
     switch(conStatus)
     {
     case 0:
+        coffeeMap.load(":/test/coffee_container_yes.png");
+        coffeeMap = coffeeMap.scaledToWidth(200);
+        waterMap.load(":/test/bottled-yes.png");
+        waterMap = waterMap.scaledToWidth(150);
 
-        //NOTE Der mangler status vinduer. Yderligere funktioner til de enkelte cases.
-
-        QPixmap coffeeMap(":/test/bottled-yes.png");
-        QPixmap CoffeePix = coffeeMap.scaledToWidth(150);
-
-        QPixmap waterMap(":/test/coffee_container_yes.png");
-        QPixmap WaterPix = waterMap.scaledToWidth(200);
-
-        ui->coffee_container->setPixmap(CoffeePix);
-        ui->water_cointainer->setPixmap(WaterPix);
-
+        ui->coffee_container->setPixmap(coffeeMap);
+        ui->water_cointainer->setPixmap(waterMap);
         break;
+   case 1:
+        coffeeMap.load(":/test/coffee_container_yes.png");
+        coffeeMap = coffeeMap.scaledToWidth(200);
+        waterMap.load(":/test/bottled-no.png");
+        waterMap = waterMap.scaledToWidth(150);
 
+        ui->coffee_container->setPixmap(coffeeMap);
+        ui->water_cointainer->setPixmap(waterMap);
+        break;
+    case 2:
+        coffeeMap.load(":/test/coffee_container_no.png");
+        coffeeMap = coffeeMap = coffeeMap.scaledToWidth(200);
+        waterMap.load(":/test/bottled-yes.png");
+        waterMap = waterMap.scaledToWidth(150);
+
+        ui->coffee_container->setPixmap(coffeeMap);
+        ui->water_cointainer->setPixmap(waterMap);
+        break;
+    case 3:
+        coffeeMap.load(":/test/coffee_container_no.png");
+        coffeeMap = coffeeMap.scaledToWidth(200);
+        waterMap.load(":/test/bottled-no.png");
+        waterMap = waterMap.scaledToWidth(150);
+
+        ui->coffee_container->setPixmap(coffeeMap);
+        ui->water_cointainer->setPixmap(waterMap);
+        break;
+    default:
+        break;
     }
 }
 

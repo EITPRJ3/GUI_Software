@@ -18,7 +18,7 @@ public:
     char readErrorState();
     bool readyToBrew();
     bool brewingDone();
-    void getData(char* data);
+    bool getData(char* data);
     protected:
     private:
 };
