@@ -40,6 +40,21 @@ char psocif::readErrorState()
 
 bool psocif::readyToBrew()
 {
+    char data[1];
+    if(!getData(&data[0])) return false;
+
+    int error = data[0] & 0x3;
+    int functionState = (data[0] & 0x1C) >> 2;
+
+    if(functionState != DONE || error != NOERROR)
+        return false;
+    else
+        return true;
+
+
+    /* CLEANUP ALT HERUNDER ER SKRALD, MEN LADER DET VÆRE HVIS ANDERS VIL KIGGE PÅ DET OG SE OM JEG HAR OVERSET NOGET*/
+
+    /*
     char data[5];
     if(!getData(&data[0])) return false;
 
@@ -56,21 +71,22 @@ bool psocif::readyToBrew()
         return false;
     if(data[0] != NOERROR)
         return false;
-    */
+
     return true;
+    */    
+    /* SLET ALT DET PIS OK*/
 }
 
 bool psocif::brewingDone()
 {
 
-    char data[2];
+    char data[1];
     if(!getData(&data[0])) return false;
 
-    //data[0] = (data[0] & 0x1C) >> 2;
-    qDebug() << "Coffee Done: " << +data[1] << " : " << +data[0] << endl;
+    qDebug() << "brewingDone: " << +data[0] << endl;
+    data[0] = (data[0] & 0x1C) >> 2;
 
-    return ( (data[0] & 0x1C) >> 2 ) == DONE;
-
+    return data[0] == 0b101;
 
     /*if( (rand() % 5) == 1 )
         return true;
@@ -88,7 +104,7 @@ bool psocif::getData(char* data)
         return false;
     }
 
-    read(fd, data, 2);
+    read(fd, data, 1);
     close(fd);
     return true;
 }

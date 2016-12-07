@@ -23,7 +23,7 @@ void SPIWorker::operate(int coffeeChoice)
             emit resultReady();
             break;
         }
-        qDebug() << "Coffee is not done" << endl;
+        //qDebug() << "Coffee is not done" << endl;
     }
 }
 

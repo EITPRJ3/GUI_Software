@@ -30,3 +30,10 @@ SOURCES += admin.cpp \
            statistik.cpp \
            status.cpp
 RESOURCES += billeder.qrc database.qrc
+
+target.path = /home/root/$${TARGET}
+INSTALL += target
+# Default rules for deployment.
+include(deployment.pri)
+
+DISTFILES += \
