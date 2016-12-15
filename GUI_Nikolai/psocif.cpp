@@ -42,11 +42,13 @@ bool psocif::readyToBrew()
 {
     char data[1];
     if(!getData(&data[0])) return false;
+    qDebug() << "readyToBrew() " << +data[0] << endl;
 
     int error = data[0] & 0x3;
     int functionState = (data[0] & 0x1C) >> 2;
 
-    if(functionState != DONE || error != NOERROR)
+    //if(functionState != DONE || error != NOERROR)
+    if(error != NOERROR)
         return false;
     else
         return true;

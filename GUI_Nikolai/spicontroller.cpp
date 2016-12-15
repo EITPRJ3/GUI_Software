@@ -20,6 +20,7 @@ void SpiController::start(int coffeeChoice)
 {
     workerThread.start();
     emit orderCoffee(coffeeChoice);
+    qDebug() << workerThread.currentThreadId() << endl;
 }
 
 void SpiController::handleResults()

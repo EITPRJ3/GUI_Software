@@ -3,7 +3,6 @@
 #include <QTimer>
 #include <QSize>
 #include "qdebug.h"
-
 makingScreen::makingScreen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::makingScreen)
@@ -29,29 +28,26 @@ makingScreen::~makingScreen()
 
 void makingScreen::init(int value)
 {
-    if(value != 5)
+    if(value < 6)
         controller->start(value);
 
     this->show();
 
     switch(value)
     {
-     case 0:
+     case HOTWATER:
         waterScreen();
         break;
-     case 1:
+     case WEAKCOFFEE:
         weakScreen();
         break;
-     case 2:
+     case NORMALCOFFEE:
         NormalCoffeeScreen();
         break;
-     case 3:
+     case STRONGCOFFEE:
         strongScreen();
         break;
-     case 4:
-        favoriteScreen();
-        break;
-     case 5:
+     case FAILEDSCREEN:
         failedScreen();
         break;
     default:
@@ -61,7 +57,6 @@ void makingScreen::init(int value)
 
 void makingScreen::NormalCoffeeScreen()
 {
-    qDebug() << "Normalscreen her" << endl;
     coffeeMovie = new QMovie(":/test/coffee.gif");
     ui->screen->setMovie(coffeeMovie);
     coffeeMovie->start();
@@ -102,10 +97,10 @@ void makingScreen::strongScreen()
     ui->screen->setMovie(coffeeMovie);
     coffeeMovie->setScaledSize(QSize(475,400));
     coffeeMovie->start();
-    ui->makingText->setText("Din STRONGE kaffe brygges");
+    ui->makingText->setText("Din stærk kaffe brygges");
 }
 
-void makingScreen::favoriteScreen()
+/*void makingScreen::favoriteScreen()
 {
     coffeeMovie = new QMovie(":/test/HappyCoffee.gif");
     ui->screen->setMovie(coffeeMovie);
@@ -113,4 +108,4 @@ void makingScreen::favoriteScreen()
 
     coffeeMovie->start();
     ui->makingText->setText("Den mest popular kaffe brygges");
-}
+}*/

@@ -33,7 +33,7 @@ void status::doStatusScreen(int conStatus)
    case 1:
         coffeeMap.load(":/test/coffee_container_yes.png");
         coffeeMap = coffeeMap.scaledToWidth(200);
-        waterMap.load(":/test/bottled-no.png");
+        waterMap.load(":/test/bottled-water_no.png");
         waterMap = waterMap.scaledToWidth(150);
 
         ui->coffee_container->setPixmap(coffeeMap);
@@ -51,7 +51,7 @@ void status::doStatusScreen(int conStatus)
     case 3:
         coffeeMap.load(":/test/coffee_container_no.png");
         coffeeMap = coffeeMap.scaledToWidth(200);
-        waterMap.load(":/test/bottled-no.png");
+        waterMap.load(":/test/bottled-water_no.png");
         waterMap = waterMap.scaledToWidth(150);
 
         ui->coffee_container->setPixmap(coffeeMap);
