@@ -14,7 +14,7 @@ void psocif::sendCommand(int cmd)
 {
     char cmd_[1];
     sprintf(cmd_, "%d", cmd);
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
 
     if(fd < 0)
     {
@@ -65,7 +65,7 @@ bool psocif::brewingDone()
 
 bool psocif::getData(char* data)
 {
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt",O_RDONLY);
+    int fd = open("testBuffer.txt",O_RDONLY);
 
     if( fd < 0)
     {

@@ -42,7 +42,7 @@ void PRJ3_UnitTestTest::testSendCommand()
 {
     char buffer[1];
     interface->sendCommand(0x01);
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_RDONLY);
+    int fd = open("testBuffer.txt", O_RDWR);
     read(fd, buffer, 1);
     QVERIFY(buffer[0] == '1');
 }
@@ -54,7 +54,7 @@ void PRJ3_UnitTestTest::testReadErrorState_NOERROR()
     char buffer[1];
     sprintf(buffer, "%d", 0);  //Code for No Error
 
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
     write(fd, buffer, strlen("1"));
     close(fd);
 
@@ -69,7 +69,7 @@ void PRJ3_UnitTestTest::testReadErrorState_WATER_ERROR()
     char buffer[1];
     sprintf(buffer, "%d", 0x1);  //Code for No Water
 
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
     write(fd, buffer, strlen("1"));
     close(fd);
 
@@ -84,7 +84,7 @@ void PRJ3_UnitTestTest::testReadErrorState_COFFEE_ERROR()
     char buffer[1];
     sprintf(buffer, "%d", 0x2);  //Code for No Coffee
 
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
     write(fd, buffer, strlen("1"));
     close(fd);
 
@@ -99,7 +99,7 @@ void PRJ3_UnitTestTest::testReadErrorState_BOTH_ERROR()
     char buffer[1];
     sprintf(buffer, "%d", 0x3);  //Code for No Water No Coffee
 
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
     write(fd, buffer, strlen("1"));
     close(fd);
 
@@ -114,7 +114,7 @@ void PRJ3_UnitTestTest::testReadyToBrew_READY()
     char buffer[1];
     sprintf(buffer, "%d", 0x0);  //Code for No Error
 
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
     write(fd, buffer, strlen("1"));
     close(fd);
 
@@ -128,7 +128,7 @@ void PRJ3_UnitTestTest::testReadyToBrew_NOT_READY()
     char buffer[1];
     sprintf(buffer, "%d", 0x3);  //Code for No Water No Coffee
 
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
     write(fd, buffer, strlen("1"));
     close(fd);
 
@@ -141,7 +141,7 @@ void PRJ3_UnitTestTest::testBrewingDone_DONE()
     //For reference see Protocol Description
     char buffer[1];
     buffer[0] = 0b10100;
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
     write(fd, buffer, strlen("1"));
     close(fd);
 
@@ -155,7 +155,7 @@ void PRJ3_UnitTestTest::testBrewingDone_NOT_DONE()
     char buffer[1];
     buffer[0] = 0b00000;
 
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
     write(fd, buffer, strlen("1"));
     close(fd);
 
@@ -172,7 +172,7 @@ void PRJ3_UnitTestTest::testSpiworker_CAN_EMIT()
      */
     char buffer[1];
     buffer[0] = 0b10100;
-    int fd = open("/home/stud/devel/TestPSOC/testBuffer.txt", O_TRUNC | O_CREAT | O_RDWR);
+    int fd = open("testBuffer.txt", O_CREAT | O_TRUNC | O_RDWR, 0600);
     write(fd, buffer, strlen("1"));
     close(fd);
 
